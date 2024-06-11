@@ -3,5 +3,6 @@
   display: flex;
   gap: 2em;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
