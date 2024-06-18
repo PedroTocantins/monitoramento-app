@@ -49,7 +49,7 @@ def create_app(config_name):
         conn = db_connect.connect()
         query = conn.execute(
             text(
-                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 20"
             )
         )
         conn.commit()
@@ -62,7 +62,7 @@ def create_app(config_name):
         conn = db_connect.connect()
         query = conn.execute(
             text(
-                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 20"
             )
         )
         conn.commit()
@@ -75,7 +75,7 @@ def create_app(config_name):
         conn = db_connect.connect()
         query = conn.execute(
             text(
-                "SELECT ROUND(AVG(temperatura),0) as MED_TEMPERATURA, ROUND(AVG(umidade),0) as MED_UMIDADE, ROUND(AVG(luminosidade),0) as MED_LUMINOSIDADE FROM MONITORAMENTO"
+                "SELECT ROUND(AVG(temperatura),0) as MED_TEMPERATURA, ROUND(AVG(umidade),0) as MED_UMIDADE, ROUND(AVG(luminosidade),0) as MED_LUMINOSIDADE FROM MONITORAMENTO "
             )
         )
         conn.commit()
@@ -88,20 +88,20 @@ def create_app(config_name):
         conn = db_connect.connect()
         query = conn.execute(
             text(
-                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 20"
             )
         )
         conn.commit()
         result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
         conn.close()
         return jsonify(result)
-    
+
     @app.route("/monitoramento/graficolinhas", methods=["GET"])
     def GraficoLinhas():
         conn = db_connect.connect()
         query = conn.execute(
             text(
-                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 20"
             )
         )
         conn.commit()
@@ -138,7 +138,7 @@ def create_app(config_name):
         elif request.method == "GET":
             conn = db_connect.connect()
             query = conn.execute(
-                text("select * from monitoramento order by id DESC limit 10")
+                text("select * from monitoramento order by id DESC limit 20")
             )
             conn.commit()
             result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
