@@ -4,6 +4,7 @@ function getData() {
   fetch('http://127.0.0.1:5000/monitoramento/grafico1')
     .then((response) => response.json())
     .then((data) => {
+      arr = [['Dispositivo', 'Total']]; // Reset arr to include header
       data.slice(0, 5).forEach((item) => {
         arr.push([item.dispositivo, item.TotalRegistros]);
       });
@@ -14,24 +15,22 @@ function getData() {
 
 function drawCharts() {
   loadGoogleCharts(() => {
-    renderPieChart();
-    renderBarChart();
-    renderLineChart();
+    if (document.getElementById('pie_chart')) renderPieChart();
+    if (document.getElementById('bar_chart')) renderBarChart();
+    if (document.getElementById('line_chart')) renderLineChart();
   });
 }
 
 function loadGoogleCharts(callback) {
-  google.charts.load('current', { packages: ['corechart', 'bar'] });
+  google.charts.load('current', { packages: ['corechart', 'bar', 'gauge'] });
   google.charts.setOnLoadCallback(callback);
 }
 
 function renderPieChart() {
   const data = google.visualization.arrayToDataTable(arr);
   const options = {
-    title: 'Total Dipositivos - Pizza',
-    colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-    fontSize: 14,
-    legend: { position: 'bottom', textStyle: { color: 'blue', fontSize: 16 } },
+    title: 'Total Dispositivos - Pizza',
+    
   };
   const chart = new google.visualization.PieChart(
     document.getElementById('pie_chart')
@@ -43,7 +42,7 @@ function renderBarChart() {
   const data = google.visualization.arrayToDataTable(arr);
   const options = {
     chart: {
-      title: 'Total Dipositivos - Barras',
+      title: 'Total Dispositivos - Barras',
     },
     bars: 'horizontal',
     colors: ['#1b9e77', '#d95f02', '#7570b3'],
@@ -61,16 +60,14 @@ function renderBarChart() {
     fontName: 'Arial',
     fontSize: 14,
   };
-  const chart = new google.charts.Bar(
-    document.getElementById('barchart_material')
-  );
-  chart.draw(data, options);
+  const chart = new google.charts.Bar(document.getElementById('bar_chart'));
+  chart.draw(data, google.charts.Bar.convertOptions(options));
 }
 
 function renderLineChart() {
   const data = google.visualization.arrayToDataTable(arr);
   const options = {
-    title: 'Total Dipositivos - Linha',
+    title: 'Total Dispositivos - Linha',
     colors: ['#a52714', '#097138'],
     hAxis: {
       title: 'Dispositivo',
@@ -87,9 +84,9 @@ function renderLineChart() {
     legend: { position: 'top', textStyle: { color: '#333', fontSize: 16 } },
   };
   const chart = new google.visualization.LineChart(
-    document.getElementById('chart_div')
+    document.getElementById('line_chart')
   );
   chart.draw(data, options);
 }
 
-getData();
+document.addEventListener('DOMContentLoaded', getData);

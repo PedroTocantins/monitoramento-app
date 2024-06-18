@@ -13,6 +13,10 @@
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
+    <style>
+     
+      
+    </style>
   </head>
   <body>
     <header>
@@ -73,13 +77,26 @@
           <p><i class="fa-solid fa-house"></i> / Gráficos</p>
         </div>
         <div class="charts">
-          <div id="chart_div"></div>
-          <div id="barchart_material"></div>
-          <div id="pie_chart"></div>
+          <iframe
+            class="bar"
+            src="./barChart/bar.html"
+            frameborder="0"
+          ></iframe>
+          <iframe
+            class="pie"
+            src="./pieChart/pie.html"
+            frameborder="0"
+          ></iframe>
+          <iframe
+            class="line"
+            src="./lineChart/line.html"
+            frameborder="0"
+          ></iframe>
+          <iframe class="gauge" src="./gaugeChart/gauge.html" frameborder="0">
+          </iframe>
         </div>
       </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
-    <script src="./charts.js"></script>
   </body>
 </html>
