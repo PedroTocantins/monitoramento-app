@@ -10,7 +10,7 @@ function getData() {
         ['Label', 'Value'],
         ['Temperatura', data[0].MED_TEMPERATURA],
         ['Umidade', data[0].MED_UMIDADE],
-        ['Luminosidade', data[0].MED_LUMINOSIDADE],
+        ['Luz', data[0].MED_LUMINOSIDADE],
       ];
       drawCharts();
     })

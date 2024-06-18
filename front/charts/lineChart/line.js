@@ -22,6 +22,7 @@ export function renderLineChart() {
     const options = {
       title: 'Total Dispositivos - Linha',
       colors: ['#a52714', '#097138'],
+      width: 300,
       hAxis: {
         title: 'Dispositivo',
         titleTextStyle: { color: '#333' },

@@ -9,13 +9,21 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
     <link rel="stylesheet" href="../charts.css" />
+    <style>
+      html,body{
+        height: 100%;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="char_header">
-      <h3>Gráficos de Totalização de Registros Geral</h3>
-      <p>Ultimas 20 medições</p>
+    <div class="container">
+      <div class="chart_header">
+        <h3>Gráficos de Totalização de Registros Geral</h3>
+        <p>Ultimas 20 medições</p>
+      </div>
+      <div id="bar_chart"></div>
     </div>
-    <div id="bar_chart"></div>
     <script type="module" src="../charts.js"></script>
     <script type="module" src="bar.js"></script>
   </body>

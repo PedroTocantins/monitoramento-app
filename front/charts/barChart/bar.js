@@ -23,6 +23,7 @@ export function renderBarChart() {
       chart: { title: 'Total Dispositivos - Barras' },
       bars: 'horizontal',
       colors: ['#1b9e77', '#d95f02', '#7570b3'],
+      width: 300,
       hAxis: {
         title: 'Total',
         minValue: 0,

@@ -19,7 +19,10 @@ export function renderPieChart() {
   google.charts.load('current', { packages: ['corechart'] });
   google.charts.setOnLoadCallback(() => {
     const data = google.visualization.arrayToDataTable(arr);
-    const options = { title: 'Total Dispositivos - Pizza' };
+    const options = { 
+      title: 'Total Dispositivos - Pizza',
+      width: 300,
+     };
     const chart = new google.visualization.PieChart(
       document.getElementById('pie_chart')
     );

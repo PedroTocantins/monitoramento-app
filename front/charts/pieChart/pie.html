@@ -9,13 +9,22 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
     <link rel="stylesheet" href="/front/charts/charts.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="char_header">
-      <h3>Gráficos de Totalização de Registros Geral</h3>
-      <p>Ultimas 20 medições</p>
+    <div class="container">
+      <div class="chart_header">
+        <h3>Gráficos de Totalização de Registros Geral</h3>
+        <p>Ultimas 20 medições</p>
+      </div>
+      <div class="chart_div" id="pie_chart"></div>
     </div>
-    <div class="chart_div" id="pie_chart"></div>
     <script type="module" src="../charts.js"></script>
   </body>
 </html>
