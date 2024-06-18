@@ -57,12 +57,51 @@ def create_app(config_name):
         conn.close()
         return jsonify(result)
 
+    @app.route("/monitoramento/graficopizza", methods=["GET"])
+    def GraficoPizza():
+        conn = db_connect.connect()
+        query = conn.execute(
+            text(
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+            )
+        )
+        conn.commit()
+        result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
+        conn.close()
+        return jsonify(result)
+
     @app.route("/monitoramento/graficomedidor", methods=["GET"])
-    def Average():
+    def GraficoMedidor():
         conn = db_connect.connect()
         query = conn.execute(
             text(
                 "SELECT ROUND(AVG(temperatura),0) as MED_TEMPERATURA, ROUND(AVG(umidade),0) as MED_UMIDADE, ROUND(AVG(luminosidade),0) as MED_LUMINOSIDADE FROM MONITORAMENTO"
+            )
+        )
+        conn.commit()
+        result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
+        conn.close()
+        return jsonify(result)
+
+    @app.route("/monitoramento/graficobarra", methods=["GET"])
+    def GraficoBarra():
+        conn = db_connect.connect()
+        query = conn.execute(
+            text(
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
+            )
+        )
+        conn.commit()
+        result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
+        conn.close()
+        return jsonify(result)
+    
+    @app.route("/monitoramento/graficolinhas", methods=["GET"])
+    def GraficoLinhas():
+        conn = db_connect.connect()
+        query = conn.execute(
+            text(
+                "SELECT dispositivo, COUNT(dispositivo) as TotalRegistros FROM monitoramento GROUP BY dispositivo limit 10"
             )
         )
         conn.commit()
